@@ -180,7 +180,7 @@ def train_DGMG_epoch(epoch, args, model, dataset, optimizer, scheduler, is_fast 
             epoch, args.epochs,loss_all[0], args.graph_type, args.node_embedding_size))
 
 
-    # loss_sum += loss.data[0]*x.size(0)
+    # loss_sum += loss.data*x.size(0)
     # return loss_sum
 
 
