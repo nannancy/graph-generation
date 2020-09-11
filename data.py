@@ -19,6 +19,22 @@ from utils import *
 
 
 
+# load ontology dataset
+def Graph_load_batch():
+    print("loading workflows dataset:")
+    G = nx.Graph()
+    path = "dataset/workflows/"
+    data_adj = np.loadtxt(path+"workflow.txt", delimiter = ",").astype(int)
+    data_node_label = np.loadtxt(path+"labels.txt", delimiter=",").astype(string)
+    data_tuple = list(map(tuple,data_adj))
+    # add edges
+    G.add_edges_from(data_tuple)
+    # add node attributes
+    for i in range(data_node_label.shape[0]):
+        G.add_node(i+1, label = data_node_label[i])
+
+    # print(G.number_of_nodes())
+    # print(G.number_of_edges())
 
 # load ENZYMES and PROTEIN and DD dataset
 def Graph_load_batch(min_num_nodes = 20, max_num_nodes = 1000, name = 'ENZYMES',node_attributes = True,graph_labels=True):
